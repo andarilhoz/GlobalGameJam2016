@@ -3,7 +3,7 @@
   <spriteName>spr_bag</spriteName>
   <solid>0</solid>
   <visible>-1</visible>
-  <depth>-20</depth>
+  <depth>-25</depth>
   <persistent>0</persistent>
   <parentName>&lt;undefined&gt;</parentName>
   <maskName>&lt;undefined&gt;</maskName>
@@ -28,6 +28,7 @@
             <string>open = false;
 clicable = false;
 alarm[0] = 15;
+
 </string>
           </argument>
         </arguments>
@@ -115,7 +116,7 @@ alarm[0] = 15;
         sprite_index = spr_exit;
         self.identificador = 999;
     }
-    mixer = instance_create(100,300, Thing);   
+    mixer = instance_create(100,500, Thing);   
     with(mixer){
         self.nome = "Mixer";
         sprite_index = spr_mix;
@@ -144,14 +145,20 @@ alarm[0] = 15;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if(open == true){
+            <string>if(Controlador.vencidos &gt;1 &amp;&amp; global.faseNumero != 3 || GUI.tutorialFim == true ){
+    draw_self()
+}else{
+
+}
+if(open == true){
     draw_set_color(c_black);
     draw_set_alpha(0.7);
     draw_rectangle(0,0,600,800,0);
     draw_set_alpha(1);
-}else{
-    draw_self();
 }
+
+
+
 </string>
           </argument>
         </arguments>

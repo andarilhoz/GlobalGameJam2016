@@ -3,7 +3,7 @@
   <spriteName>&lt;undefined&gt;</spriteName>
   <solid>0</solid>
   <visible>-1</visible>
-  <depth>0</depth>
+  <depth>-10</depth>
   <persistent>0</persistent>
   <parentName>&lt;undefined&gt;</parentName>
   <maskName>&lt;undefined&gt;</maskName>
@@ -65,10 +65,13 @@
             self.numero = 0
         break;
 }
-life = 3;
+life = 5;
+deuItem = false;
 charging = 300;
-Controlador.vitorias[global.faseNumero] = 1
-Controlador.vencidos++;
+if(global.faseNumero != 3){
+    Controlador.vitorias[global.faseNumero] = 1
+    Controlador.vencidos++;
+}
 </string>
           </argument>
         </arguments>
@@ -91,17 +94,56 @@ Controlador.vencidos++;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if(GUI.tutorialFim == true &amp;&amp; self.life &lt; 5 &amp;&amp; self.life &gt; 0)
+            <string>if(GUI.tutorialFim == true &amp;&amp; self.life &gt; 0 &amp;&amp; global.faseNumero != 3)
     charging--;
 
 if(charging == 0){
     attack = audio_emitter_create()
     audio_play_sound_on(attack, snd_enemy_attack, 0, 1);
     charging = 300;
+    Controlador.vidas--;
+}
+
+if(Controlador.vidas &lt;1){
+    room = rm_game_over;
 }
 
 if(life &lt; 1){
     visible = false;
+    if(find_in_array(Controlador.iventario,999) &amp;&amp; deuItem == false){
+        for(i = 0; i&lt;8; i++){
+            if(Controlador.iventario[i] == 999){
+                Controlador.iventario[i] = irandom_range(0,8);                
+            }
+        }
+        deuItem = true;
+    }
+    instance_create(250,350,Voltar);
+}
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="6" enumb="7">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>if(global.faseNumero == 3){
+    room = rm_menu;
 }
 </string>
           </argument>
@@ -125,14 +167,26 @@ if(life &lt; 1){
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>switch(self.numero){
+            <string>if(life &gt; 0 &amp;&amp; global.faseNumero != 3){
+    //draw_healthbar(10,10,590,40,Enemy.charging/3,c_gray,c_blue,c_red,0,true,true)
+    vida = life*100 + 42
+    draw_set_alpha(0.6);
+    draw_rectangle_colour(50,20,542,85,c_black,c_black,c_black,c_black,0);
+    draw_triangle_colour(542,20,600,20,542,85,c_black,c_black,c_black,0);
+    draw_set_alpha(1);
+    draw_rectangle_colour(50,20,vida,85,c_red,c_red,c_red,c_red,0);
+    draw_triangle_colour(vida,20,vida+58,20,vida,85,c_red,c_red,c_red,0);
+    draw_sprite(spr_healthbar,0,10,10);    
+}
+
+switch(self.numero){
     case 1: draw_sprite(spr_enemy_wrath,0,0,0);
             mask_index = spr_enemy_wrath;
         break;
     case 2: draw_sprite(spr_enemy_gluton,0,0,0);
             mask_index = spr_enemy_gluton;
         break;
-    case 3: self.nome = "Preguica";
+    case 3: draw_sprite(spr_sloth,0,0,0);
         break;
     case 4: draw_sprite(spr_enemy_greed,0,0,0);
             mask_index = spr_enemy_greed;

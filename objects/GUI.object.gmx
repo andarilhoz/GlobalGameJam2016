@@ -3,7 +3,7 @@
   <spriteName>&lt;undefined&gt;</spriteName>
   <solid>0</solid>
   <visible>-1</visible>
-  <depth>0</depth>
+  <depth>-100</depth>
   <persistent>0</persistent>
   <parentName>&lt;undefined&gt;</parentName>
   <maskName>&lt;undefined&gt;</maskName>
@@ -32,9 +32,13 @@ tutorialFim = false;
 alpha = 0;
 
 tipoMacumba[0] = 0;
-
+preguica = 0;
 
 poder = 0;
+
+
+
+
 
 selecionado[0] = 999;
 selecionado[1] = 999;
@@ -119,29 +123,6 @@ alarmeAtivo = false;
         </arguments>
       </action>
     </event>
-    <event eventtype="6" enumb="57">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>room = rm_menu;
-</string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
     <event eventtype="6" enumb="56">
       <action>
         <libid>1</libid>
@@ -159,18 +140,18 @@ alarmeAtivo = false;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if(tutorialPart == 2 &amp;&amp; Enemy.life &gt; 0){
+            <string>if(tutorialPart == 2 &amp;&amp; Enemy.life &gt; 0 &amp;&amp; global.faseNumero != 3){
     tutorialFim = true;
     Table.visible = true;
     podeClica = false;
 }
 
-if(Enemy.life &lt; 1 &amp;&amp; alarmeAtivo == false){
+if(Enemy.life &lt; 1 &amp;&amp; alarmeAtivo == false &amp;&amp; global.faseNumero != 3){
     alarm[0] = 15;
     alarmeAtivo = true;
 }
 
-if(tutorialPart == 2 &amp;&amp; Enemy.life &lt; 1 &amp;&amp; podeClica == true){
+if(tutorialPart == 2 &amp;&amp; Enemy.life &lt; 1 &amp;&amp; podeClica == true &amp;&amp; global.faseNumero != 3){
     tutorialFim = false;
     Table.visible = false;
     alpha = 0;
@@ -179,11 +160,15 @@ if(tutorialPart == 2 &amp;&amp; Enemy.life &lt; 1 &amp;&amp; podeClica == true){
     alarm[0] = 15;
 }
 
-if(tutorialPart == 3 &amp;&amp; podeClica){
+if(podeClica == true &amp;&amp; global.faseNumero == 3){
+    preguica++;
+}
+
+if(tutorialPart == 3 &amp;&amp; podeClica &amp;&amp; global.faseNumero != 3){
     room = rm_menu;
 }
 
-if(Controlador.vencidos &lt; 2 &amp;&amp; tutorialPart &lt; 2 &amp;&amp; podeClica == true){
+if(Controlador.vencidos &lt; 2 &amp;&amp; tutorialPart &lt; 2 &amp;&amp; podeClica == true &amp;&amp; global.faseNumero != 3){
     podeClica = false;
     alarm[0] = 15;
     tutorialPart++;    
@@ -211,27 +196,21 @@ if(Controlador.vencidos &lt; 2 &amp;&amp; tutorialPart &lt; 2 &amp;&amp; podeCli
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if(instance_exists(Enemy)){
-    draw_text_colour(10,10,"Fase: " + global.fase +"  Vidas monstro: "+string(Enemy.life),c_black,c_black,c_black,c_black,1);
-}
-
-
-
-
+            <string>
 draw_set_alpha(alpha)
 if(alpha &lt;= 1){
     alpha+= 0.03;
 }
-if(Controlador.vencidos &lt; 2 &amp;&amp; tutorialFim == false){
+if(Controlador.vencidos &lt; 2 &amp;&amp; tutorialFim == false || global.faseNumero == 3){
     draw_rectangle(0,600,600,800,0)
     script_execute(Tutorial);       
 }else{
     tutorialFim = true;
 }
+
 draw_set_alpha(1);
 
-if(Enemy.life &gt; 0)
-    draw_healthbar(10,10,590,40,Enemy.charging/3,c_gray,c_blue,c_red,0,true,true)
+
 </string>
           </argument>
         </arguments>

@@ -10,6 +10,8 @@
     <sound>sound\snd_caldeirao</sound>
     <sound>sound\snd_power_break</sound>
     <sound>sound\snd_feitico_criado</sound>
+    <sound>sound\snd_game_over</sound>
+    <sound>sound\snd_win</sound>
   </sounds>
   <sprites name="sprites">
     <sprite>sprites\spr_fase_default</sprite>
@@ -20,23 +22,35 @@
       <sprite>sprites\spr_enemy_envy</sprite>
       <sprite>sprites\spr_enemy_greed</sprite>
       <sprite>sprites\spr_enemy_pride</sprite>
+      <sprite>sprites\spr_sloth</sprite>
     </sprites>
     <sprites name="MainGame">
       <sprite>sprites\spr_table</sprite>
       <sprite>sprites\spr_bag</sprite>
       <sprites name="Things">
+        <sprite>sprites\spr_bills</sprite>
         <sprite>sprites\spr_salt</sprite>
-        <sprite>sprites\spr_teste</sprite>
+        <sprite>sprites\spr_whey</sprite>
+        <sprite>sprites\spr_desdentado</sprite>
+        <sprite>sprites\spr_arrow</sprite>
+        <sprite>sprites\spr_dog</sprite>
+        <sprite>sprites\spr_cross</sprite>
+        <sprite>sprites\spr_calice</sprite>
+        <sprite>sprites\spr_bonsai</sprite>
+        <sprite>sprites\spr_salad</sprite>
       </sprites>
     </sprites>
     <sprites name="GUI">
       <sprite>sprites\spr_exit</sprite>
       <sprite>sprites\spr_mix</sprite>
+      <sprite>sprites\spr_healthbar</sprite>
     </sprites>
     <sprites name="Powers">
       <sprite>sprites\spr_red_orb</sprite>
       <sprite>sprites\spr_kamehameha</sprite>
+      <sprite>sprites\spr_bigbangattack</sprite>
     </sprites>
+    <sprite>sprites\spr_botao</sprite>
   </sprites>
   <backgrounds name="background">
     <backgrounds name="History">
@@ -45,10 +59,13 @@
       <background>background\bg_history_2</background>
       <background>background\bg_history_3</background>
     </backgrounds>
-    <backgrounds name="Menu">
-      <background>background\bg_menu</background>
-    </backgrounds>
     <background>background\bg_outside</background>
+    <background>background\bg_game_over</background>
+    <background>background\bg_win</background>
+    <background>background\bg_about</background>
+    <background>background\bg_menu</background>
+    <background>background\bg_fight</background>
+    <background>background\aboutcompl</background>
   </backgrounds>
   <paths name="paths"/>
   <scripts name="scripts">
@@ -79,12 +96,16 @@
       <object>objects\Controlador</object>
       <object>objects\Languages</object>
     </objects>
+    <object>objects\Voltar</object>
   </objects>
   <rooms name="rooms">
     <room>rooms\rm_select_language</room>
     <room>rooms\rm_history</room>
     <room>rooms\rm_menu</room>
     <room>rooms\rm_main</room>
+    <room>rooms\rm_game_over</room>
+    <room>rooms\rm_win</room>
+    <room>rooms\rm_about</room>
   </rooms>
   <help>
     <rtf>help.rtf</rtf>

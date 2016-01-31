@@ -2,7 +2,7 @@
 <object>
   <spriteName>spr_fase_default</spriteName>
   <solid>0</solid>
-  <visible>-1</visible>
+  <visible>0</visible>
   <depth>0</depth>
   <persistent>0</persistent>
   <parentName>&lt;undefined&gt;</parentName>
@@ -62,16 +62,16 @@ switch(numero){
             self.y = 50;
         break;
     case 2: self.x = 570;
-            self.y = 40;
+            self.y = 240;
         break;
     case 3: self.x = 580;
-            self.y = 384;
+            self.y = 484;
         break;
-    case 4: self.x = 570;
+    case 4: self.x = 350;
             self.y = 700;
         break;
     case 5: self.x = 50;
-            self.y = 700;
+            self.y = 670;
         break;
     case 6: self.x = 21;
             self.y = 380;            

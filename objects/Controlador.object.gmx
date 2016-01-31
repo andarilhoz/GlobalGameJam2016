@@ -34,10 +34,16 @@ background = 0;
 timeout = 600;
 alarm[0] = timeout;
 
+vidas = 3;
+
 afterWhile = true;
+tutoMenu = 0;
+podeClica = false;
+
+alarmeAtivo = false;
 
 iventario[0] = 0; //sal
-iventario[1] = 1; //agua benta
+iventario[1] = 8; //agua benta
 iventario[2] = 2;
 iventario[3] = 3;
 iventario[4] = 4;
@@ -46,7 +52,15 @@ iventario[6] = 6;
 iventario[7] = 7;
 iventario[8] = 8;
 vencidos = 0;
-
+//0 = "Sal";
+//1 = "Agua Benta";
+//2 = "Cruz";
+//3 = "Cachorrinho";
+//4 = "Whey";
+//5 = "Espinha";
+//6 = "Jardim Zen";
+//7 = "Salada";
+//8 = "Contas";
 for(i = 1; i&lt; 8; i++){
     vitorias[i] = 0;
 }
@@ -75,6 +89,54 @@ while(instance_number(Buttons) &lt; 2){
     }
 }
 
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="2" enumb="3">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>podeClica = true;
+alarmeAtivo = false;
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="2" enumb="2">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>alarmeAtivo = false;
+game_restart();
 </string>
           </argument>
         </arguments>
@@ -129,6 +191,52 @@ while(instance_number(Buttons) &lt; 2){
         </arguments>
       </action>
     </event>
+    <event eventtype="3" enumb="0">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>
+if(room == rm_game_over &amp;&amp; vidas &lt; 3){
+    risada = audio_emitter_create();
+    audio_play_sound_on(risada,snd_game_over,0,10)
+    vidas = 3
+}else if(room = rm_win &amp;&amp; vencidos != 0 ){
+    wins = audio_emitter_create();
+    audio_play_sound_on(wins,snd_win,0,10)
+    vencidos = 0
+}
+
+if(vencidos &gt; 5 &amp;&amp; room == rm_menu){
+    room = rm_win;
+}
+
+if(room = rm_win &amp;&amp; alarmeAtivo == false || room = rm_game_over &amp;&amp; alarmeAtivo == false){
+    alarm[2] = 150;
+    alarmeAtivo = true;
+}
+
+if(room == rm_menu &amp;&amp; vencidos == 0 &amp;&amp; alarmeAtivo == false){
+    alarm[3] = 40
+    alarmeAtivo = true;
+}
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
     <event eventtype="6" enumb="56">
       <action>
         <libid>1</libid>
@@ -146,8 +254,11 @@ while(instance_number(Buttons) &lt; 2){
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if(room = rm_history &amp;&amp; afterWhile == true)
+            <string>if(room == rm_history &amp;&amp; afterWhile == true)
     background++;
+if(room == rm_menu &amp;&amp; podeClica == true){
+    tutoMenu++;
+}
 </string>
           </argument>
         </arguments>
@@ -186,6 +297,10 @@ while(instance_number(Buttons) &lt; 2){
             break;
     
     }
+}
+if(room == rm_menu &amp;&amp; vencidos == 0 &amp;&amp; tutoMenu == 0){
+    draw_rectangle(0,600,600,800,0)
+    script_execute(Tutorial); 
 }
 </string>
           </argument>

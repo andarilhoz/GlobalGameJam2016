@@ -3,7 +3,7 @@
   <spriteName>spr_table</spriteName>
   <solid>0</solid>
   <visible>-1</visible>
-  <depth>-10</depth>
+  <depth>-15</depth>
   <persistent>0</persistent>
   <parentName>&lt;undefined&gt;</parentName>
   <maskName>&lt;undefined&gt;</maskName>
@@ -25,7 +25,7 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if(Controlador.vencidos &gt;1){
+            <string>if(Controlador.vencidos &gt;1 &amp;&amp; global.faseNumero != 3){
     visible = visible;
 }else{
     visible = !visible;
@@ -54,7 +54,7 @@ alpha = 0;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if(Controlador.vencidos &gt;1){
+            <string>if(Controlador.vencidos &gt;1 &amp;&amp; global.faseNumero != 3){
     image_alpha = alpha
     draw_self();
     if(alpha&lt;1)

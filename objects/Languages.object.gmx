@@ -66,7 +66,17 @@
     pecados[4] = "Luxuria";
     pecados[5] = "Inveja";
     pecados[6] = "Vaidade";
-        
+    
+    
+    preguica[0] = "Essa era pra ser a preguica";
+    preguica[1] = "Mas acabou que deu preguica ";
+    preguica[2] = "de fazer essa fase";
+    preguica[3] = "Serio.....";
+    preguica[4] = "Aceite essa batata como pedido";
+    preguica[5] = " de desculpas";
+    preguica[6] = "(:";
+    
+    
             //0 = "Sal";
             //1 = "Agua Benta"; - luxuria
             //2 = "Cruz";  - luxuria
@@ -99,19 +109,35 @@
     objeto[2] = "Cruz";
     objeto[3] = "Cachorrinho";
     objeto[4] = "Whey";
-    objeto[5] = "Espinha";
-    objeto[6] = "Jardim Zen";
+    objeto[5] = "Banguela";
+    objeto[6] = "Bonsai Zen";
     objeto[7] = "Salada";
     objeto[8] = "Contas";
+    
+    menu[0] = "Voce devera derrotar os 7 pecados";
+    menu[1] = "Para começar clique em uma caverna";
+    menu[2] = "Cuidado, voce tem apenas 3 vidas";
+    
+    options[0] = "Sair"
+    options[1] = "Sobre"
+    options[2] = "Historia"
 
 }else if(language == "EN"){
+    options[0] = "Exit"
+    options[1] = "About"
+    options[2] = "History"
+
+    menu[0] = "You have to defeat the 7 sins";
+    menu[1] = "To start, click on a cave entrance";
+    menu[2] = "Careful, you have only 3 lifes";
+
     tutorial[0] = "Combine the ingredients"
     tutorial[1] = "to defeat your Enemy";
     tutorial[2] = "Your Enemy are: ";//+global.pronome+global.fase;
     tutorial[3] = "He's weakness: "; //+ global.fraquezaB + global.fraqueza;
     tutorial[4] = "Good Luck..."
-    tutorial[5] = "Parabens, você derrotou "; // + global.pronome + global.fase;
-    tutorial[6] = "Tente descobrir a fraqueza dos próximos por sua própria conta."
+    tutorial[5] = "Congratulations, you've just defeat the "; // + global.pronome + global.fase;
+    tutorial[6] = "Try discover the weakness of the nexts by your own";
     
     pecados[0] = "Wrath";
     pecados[1] = "Gluttony";
@@ -121,13 +147,21 @@
     pecados[5] = "Envy";
     pecados[6] = "Pride";
     
+    preguica[0] = "This was supposed to be the sloth";
+    preguica[1] = "but we become too sloth to do it";
+    preguica[2] = "";
+    preguica[3] = "Seriusly.....";
+    preguica[4] = "please instead accept this potatoes ";
+    preguica[5] = "as apology";
+    preguica[6] = "(:";
+    
     fraqueza[0] = "Calm";
     fraqueza[1] = "Healthy Things";
     fraqueza[2] = "Excercises";
     fraqueza[3] = "Poor";
     fraqueza[4] = "holiness";
     fraqueza[5] = "Goodness";
-    fraqueza[6] = "Ugliness";
+    fraqueza[6] = "Toothless";
         
     fraquezaB[0] = "is:";
     fraquezaB[1] = "";
@@ -136,6 +170,16 @@
     fraquezaB[4] = "";
     fraquezaB[5] = "";
     fraquezaB[6] = "";
+    
+    objeto[0] = "Salth";
+    objeto[1] = "Holly Water";
+    objeto[2] = "Cross";
+    objeto[3] = "Puppy";
+    objeto[4] = "Whey";
+    objeto[5] = "Mounth";
+    objeto[6] = "Zen Bonsai";
+    objeto[7] = "Salad";
+    objeto[8] = "Bills";
 
 }
 </string>
